@@ -1,0 +1,35 @@
+backend:
+  name: github
+  repo: your-username/new-arun-auto # CHANGE 'your-username'
+  branch: main
+
+media_folder: "assets/images" # Folder for uploaded images
+
+collections:
+  - name: "content"
+    label: "Website Content"
+    files:
+      - label: "Hero Slides"
+        name: "slides"
+        file: "data/hero-slides.json"
+        fields:
+          - label: "Slides"
+            name: "slides"
+            widget: "list"
+            fields:
+              - { label: "Image URL", name: "url", widget: "string" }
+      
+      - label: "Generators"
+        name: "generators"
+        file: "data/generators.json"
+        fields:
+          - label: "Generator List"
+            name: "generators"
+            widget: "list"
+            fields:
+              - { label: "Brand", name: "brand", widget: "string" }
+              - { label: "Model", name: "model", widget: "string" }
+              - { label: "kVA Rating", name: "kva", widget: "number" }
+              - { label: "Image URL", name: "image", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Features", name: "features", widget: "list" }
