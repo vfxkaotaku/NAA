@@ -7,19 +7,7 @@
       "image": "https://placehold.co/500x500/orange/white?text=Mahindra",
       "description": "Reliable and fuel-efficient generator for small businesses and homes.",
       "features": [
-        "Silent Operation",
-        "Low Fuel Consumption"
-      ]
-    },
-    {
-      "brand": "Kirloskar",
-      "model": "Green DG25",
-      "kva": 25,
-      "image": "https://placehold.co/500x500/green/white?text=Kirloskar",
-      "description": "Industrial-grade generator with excellent performance and durability.",
-      "features": [
-        "High Power Output",
-        "Robust Construction"
+        "Silent Operation"
       ]
     }
   ]
