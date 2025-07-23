@@ -31,25 +31,35 @@
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
                 <div class="text-2xl font-bold" style="color: var(--primary-color);">NEW ARUN AUTO</div>
-                <nav class="hidden md:flex space-x-2">
-                    <button class="nav-link nav-home px-4 py-2 rounded-md font-medium text-gray-700">Home</button>
-                    <button class="nav-link nav-generators px-4 py-2 rounded-md font-medium text-gray-700">Generators</button>
-                </nav>
             </div>
         </div>
     </header>
 
     <div id="hero-banner-container"></div>
-    <main id="main-content" class="container mx-auto px-4 py-16"></main>
-    <footer class="bg-gray-800 text-white p-8"></footer>
+    <main id="main-content" class="container mx-auto px-4 py-16">
+        <h2 class="text-4xl font-bold text-center mb-8">Our Generators</h2>
+        <div id="generators-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+    </main>
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        let generators = [];
-        let heroSlides = [];
+        // Function to determine the repository name from the URL
+        function getRepoName() {
+            const pathParts = window.location.pathname.split('/').filter(part => part);
+            return pathParts.length > 0 ? pathParts[0] : '';
+        }
 
         async function initializeApp() {
             try {
+                // Set the admin link dynamically
+                const repoName = getRepoName();
+                if (repoName) {
+                    document.getElementById('admin-login-link').href = `/${repoName}/admin/`;
+                } else {
+                    document.getElementById('admin-login-link').href = `/admin/`;
+                }
+
                 const [genResponse, slidesResponse] = await Promise.all([
                     fetch('data/generators.json'),
                     fetch('data/hero-slides.json')
@@ -59,38 +69,31 @@
                 const genData = await genResponse.json();
                 const slidesData = await slidesResponse.json();
                 
-                generators = genData.generators || [];
-                heroSlides = slidesData.slides || [];
+                const generators = genData.generators || [];
+                const heroSlides = slidesData.slides || [];
 
-                renderPage();
+                // Render Hero Banner
+                const heroContainer = document.getElementById('hero-banner-container');
+                if (heroSlides.length > 0) {
+                    heroContainer.innerHTML = `<div class="hero-banner text-white flex items-center justify-center" style="background-image: url('${heroSlides[0].url}')"><div class="hero-content text-center"><h1 class="text-5xl font-bold">NEW ARUN AUTO</h1><p>AUTHORIZED DIESEL GENERATOR DEALERS</p></div></div>`;
+                }
+
+                // Render Generators
+                const generatorsContainer = document.getElementById('generators-container');
+                generatorsContainer.innerHTML = generators.map(g => `
+                    <div class="generator-card bg-white rounded-lg overflow-hidden shadow-md">
+                        <img src="${g.image}" alt="${g.brand} ${g.model}" class="h-56 w-full object-cover">
+                        <div class="p-6">
+                            <p class="text-sm font-semibold" style="color: var(--primary-color);">${g.brand}</p>
+                            <h3 class="text-xl font-bold">${g.model} - ${g.kva} kVA</h3>
+                            <p class="text-gray-600 mt-2">${g.description}</p>
+                        </div>
+                    </div>`).join('') || '<p>No generators found.</p>';
+
             } catch (error) {
                 console.error("Failed to load initial data:", error);
                 document.getElementById('main-content').innerHTML = `<p class="text-red-500 text-center">Error: Could not load data.</p>`;
             }
-        }
-
-        function renderPage() {
-            const repoName = window.location.pathname.split('/')[1] || '';
-            document.getElementById('admin-login-link').href = `/${repoName}/admin/`;
-
-            const heroContainer = document.getElementById('hero-banner-container');
-            if (heroSlides.length > 0) {
-                heroContainer.innerHTML = `<div class="hero-banner text-white flex items-center justify-center" style="background-image: url('${heroSlides[0].url}')"><div class="hero-content text-center"><h1 class="text-5xl font-bold">NEW ARUN AUTO</h1><p>AUTHORIZED DIESEL GENERATOR DEALERS</p></div></div>`;
-            }
-
-            const mainContent = document.getElementById('main-content');
-            mainContent.innerHTML = `<section id="generators-section"><h2 class="text-4xl font-bold text-center mb-8">Our Generators</h2><div id="generators-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div></section>`;
-            
-            const generatorsContainer = document.getElementById('generators-container');
-            generatorsContainer.innerHTML = generators.map(g => `
-                <div class="generator-card bg-white rounded-lg overflow-hidden shadow-md">
-                    <img src="${g.image}" alt="${g.brand} ${g.model}" class="h-56 w-full object-cover">
-                    <div class="p-6">
-                        <p class="text-sm font-semibold" style="color: var(--primary-color);">${g.brand}</p>
-                        <h3 class="text-xl font-bold">${g.model} - ${g.kva} kVA</h3>
-                        <p class="text-gray-600 mt-2">${g.description}</p>
-                    </div>
-                </div>`).join('');
         }
 
         initializeApp();
