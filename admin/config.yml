@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: your-username/new-arun-auto # CHANGE 'your-username'
+  repo: your-username/your-reponame # CHANGE THIS LINE
   branch: main
 
 media_folder: "assets/images" # Folder for uploaded images
