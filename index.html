@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Arun Auto - Premium Diesel Generators in Nashik</title>
+    <meta name="description" content="New Arun Auto is an authorized dealer of premium diesel generators in Nashik from top brands like Kirloskar, Mahindra, Cummins, and KOEL. Offering reliable power solutions for over 58 years.">
+    <meta name="keywords" content="New Arun Auto, diesel generators Nashik, Kirloskar generators, Mahindra generators, Cummins generators, KOEL generators, power solutions, generator dealers in Nashik, diesel genset">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #DD6B20; /* A more sophisticated orange */
+            --primary-hover: #C05621;
+            --dark-text: #2D3748; /* Charcoal */
+            --light-text: #718096; /* Gray */
+            --bg-light: #F7FAFC;
+            --border-color: #E2E8F0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--dark-text);
+        }
+        
+        .hero-banner {
+            height: 80vh;
+            min-height: 500px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            transition: background-image 1s ease-in-out;
+        }
+        
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .generator-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+        }
+        
+        .generator-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        }
+        
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-menu.active {
+            max-height: 500px;
+        }
+        
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .slide-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .slide-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        
+        .slide-indicator.active {
+            background-color: white;
+            transform: scale(1.3);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+        .btn-secondary {
+            background-color: var(--border-color);
+            color: var(--dark-text);
+            transition: background-color 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: #CBD5E0;
+        }
+        .btn-danger {
+            background-color: #E53E3E;
+            color: white;
+        }
+        .btn-danger:hover {
+            background-color: #C53030;
+        }
+
+        .form-input {
+            border-color: var(--border-color);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(221, 107, 32, 0.2);
+            outline: none;
+        }
+
+        /* 3D Box Styling for Stats and Brands */
+        .stat-box, .brand-box {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-bottom-width: 4px;
+            transition: transform 0.2s ease-out, border-color 0.2s ease-out;
+        }
+        .stat-box:hover, .brand-box:hover {
+            transform: translateY(-5px);
+            border-bottom-color: var(--primary-color);
+        }
+        .brand-box {
+            padding: 0.75rem 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="hidden-login-btn" class="fixed bottom-5 right-5 w-12 h-12 bg-gray-800 text-white rounded-full flex items-center justify-center cursor-pointer z-50 shadow-lg hover:bg-gray-900 transition-colors">
+        <i class="fas fa-lock"></i>
+    </div>
+
+    <div id="admin-login-modal" class="modal">
+        <div class="modal-content">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-lock text-2xl" style="color: var(--primary-color);"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800">Admin Login</h2>
+                <p class="text-sm text-gray-500 mt-2">Enter credentials to access the admin panel.</p>
+            </div>
+            <form id="admin-login-form">
+                <div class="mb-4">
+                    <label class="block mb-2 font-medium text-gray-700">Username</label>
+                    <input type="text" id="admin-username" class="w-full p-3 border rounded-lg form-input" placeholder="Enter username" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block mb-2 font-medium text-gray-700">Password</label>
+                    <input type="password" id="admin-password" class="w-full p-3 border rounded-lg form-input" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="w-full btn-primary py-3 rounded-lg text-lg font-semibold">
+                    Login
+                </button>
+            </form>
+            <div id="login-error" class="text-red-500 mt-4 text-center hidden"></div>
+        </div>
+    </div>
+
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold" style="color: var(--primary-color);">NEW ARUN AUTO</div>
+                
+                <nav class="hidden md:flex space-x-2">
+                    <button class="nav-link nav-home px-4 py-2 rounded-md font-medium text-gray-700 hover:bg-gray-100 transition-colors active">Home</button>
+                    <button class="nav-link nav-generators px-4 py-2 rounded-md font-medium text-gray-700 hover:bg-gray-100 transition-colors">Generators</button>
+                    <button class="nav-link nav-admin px-4 py-2 rounded-md font-medium text-gray-700 hover:bg-gray-100 transition-colors hidden">Admin</button>
+                </nav>
+
+                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="mobile-menu md:hidden border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <button class="nav-link nav-home block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Home</button>
+                <button class="nav-link nav-generators block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100">Generators</button>
+                <button class="nav-link nav-admin block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hidden">Admin</button>
+            </div>
+        </div>
+    </header>
+
+    <div id="hero-banner-container">
+        <div class="hero-banner bg-gray-800 text-white flex items-center justify-center">
+            <div class="hero-content text-center px-4">
+                <div class="bg-black/20 backdrop-blur-sm p-8 rounded-2xl">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white shadow-lg">NEW ARUN AUTO</h1>
+                    <h2 class="text-lg md:text-xl font-medium text-gray-200 mb-8">AUTHORIZED DIESEL GENERATOR DEALERS</h2>
+                    <button class="explore-btn btn-primary px-8 py-3 rounded-lg font-semibold text-lg shadow-lg transform hover:scale-105 transition-transform inline-flex items-center">
+                        <i class="fas fa-bolt mr-3"></i> View Generator Panel
+                    </button>
+                </div>
+            </div>
+            <div class="slide-controls" id="slide-controls"></div>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <section id="home-section" class="content-section active">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Trusted Power Solutions</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">With 58 years of excellence, we provide reliable diesel generators for homes and businesses across Nashik.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16 text-center">
+                <div class="stat-box p-6 rounded-lg">
+                    <h3 class="text-3xl font-bold mb-2" style="color: var(--primary-color);">58+</h3>
+                    <p class="font-semibold text-gray-600">Years of Experience</p>
+                </div>
+                <div class="stat-box p-6 rounded-lg">
+                    <h3 class="text-3xl font-bold mb-2" style="color: var(--primary-color);">1000+</h3>
+                    <p class="font-semibold text-gray-600">Generators Sold</p>
+                </div>
+                <div class="stat-box p-6 rounded-lg">
+                    <h3 class="text-3xl font-bold mb-2" style="color: var(--primary-color);">4+</h3>
+                    <p class="font-semibold text-gray-600">Top Brands</p>
+                </div>
+                 <div class="stat-box p-6 rounded-lg">
+                    <h3 class="text-3xl font-bold mb-2" style="color: var(--primary-color);">24/7</h3>
+                    <p class="font-semibold text-gray-600">Customer Support</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
+                 <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Our Trusted Brands</h3>
+                 <div class="flex justify-center items-center gap-4 md:gap-6 flex-wrap">
+                    <div class="brand-box rounded-lg"><p class="text-xl font-bold text-gray-600">KIRLOSKAR</p></div>
+                    <div class="brand-box rounded-lg"><p class="text-xl font-bold text-gray-600">MAHINDRA</p></div>
+                    <div class="brand-box rounded-lg"><p class="text-xl font-bold text-gray-600">KOEL</p></div>
+                    <div class="brand-box rounded-lg"><p class="text-xl font-bold text-gray-600">CUMMINS</p></div>
+                 </div>
+            </div>
+        </section>
+
+        <section id="generators-section" class="content-section hidden">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 inline-block relative pb-2">
+                    Our Generators
+                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2/3 h-1" style="background-color: var(--primary-color);"></span>
+                </h2>
+            </div>
+            <div class="flex justify-end items-center mb-8">
+                <div class="relative">
+                    <input type="text" id="search-input" placeholder="Search generators..." 
+                           class="w-full pl-4 pr-10 py-2 border rounded-lg form-input">
+                    <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                </div>
+            </div>
+            <div id="search-results" class="text-center text-gray-500 mb-6 hidden">
+                Showing <span id="results-count">0</span> results
+            </div>
+            <div id="generators-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </section>
+
+        <section id="admin-section" class="content-section hidden">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="p-6 border-b border-gray-200">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-2xl font-bold text-gray-800">Admin Panel</h2>
+                        <button class="logout-btn btn-danger px-4 py-2 rounded-md font-semibold">Logout</button>
+                    </div>
+                </div>
+                
+                <div class="p-6 border-b border-gray-200">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-700">Manage Generators</h3>
+                    <div id="generators-list" class="space-y-3"></div>
+                </div>
+                
+                <div class="p-6 border-b border-gray-200">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-700">Manage Hero Slider Images</h3>
+                    <div class="flex mb-4">
+                        <input type="text" id="slide-image-url" placeholder="Enter image URL" class="flex-1 px-4 py-2 border rounded-l-lg form-input">
+                        <button id="add-slide-btn" class="btn-primary px-4 py-2 rounded-r-lg font-semibold">Add Slide</button>
+                    </div>
+                    <div id="slides-list" class="space-y-3"></div>
+                </div>
+                
+                <div class="p-6 bg-gray-50">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-700">Add New Generator</h3>
+                    <form id="generator-form" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block mb-1 font-medium text-gray-600">Brand</label>
+                                <select name="brand" class="w-full px-4 py-2 border rounded-lg form-input bg-white" required>
+                                    <option value="">Select brand</option>
+                                    <option>Kirloskar</option>
+                                    <option>Mahindra</option>
+                                    <option>KOEL</option>
+                                    <option>Cummins</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block mb-1 font-medium text-gray-600">Model</label>
+                                <input type="text" name="model" class="w-full px-4 py-2 border rounded-lg form-input" required>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block mb-1 font-medium text-gray-600">kVA Rating</label>
+                                <input type="number" name="kva" class="w-full px-4 py-2 border rounded-lg form-input" required>
+                            </div>
+                            <div>
+                                <label class="block mb-1 font-medium text-gray-600">Image URL</label>
+                                <input type="text" name="image" class="w-full px-4 py-2 border rounded-lg form-input" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block mb-1 font-medium text-gray-600">Description</label>
+                            <textarea name="description" class="w-full px-4 py-2 border rounded-lg form-input" rows="3" required></textarea>
+                        </div>
+                        <div>
+                            <label class="block mb-1 font-medium text-gray-600">Features (comma separated)</label>
+                            <input type="text" name="features" placeholder="e.g. Silent operation, Fuel efficient" class="w-full px-4 py-2 border rounded-lg form-input" required>
+                        </div>
+                        <div class="flex justify-end space-x-3 pt-2">
+                            <button type="button" class="cancel-btn btn-secondary px-6 py-2 rounded-lg font-semibold">Cancel</button>
+                            <button type="submit" class="save-btn btn-primary px-6 py-2 rounded-lg font-semibold">Save Generator</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">New Arun Auto</h3>
+                    <p class="text-gray-400">Your trusted partner for reliable power solutions in Nashik for over 58 years.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center"><i class="fas fa-phone mr-3"></i> <span id="footer-contact-number"></span></li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt mr-3"></i> Nashik, Maharashtra, India</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-facebook-f text-2xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-whatsapp text-2xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500">
+                <p>&copy; 2025 New Arun Auto. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="contact-modal" class="modal">
+        <div class="modal-content">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-phone text-2xl" style="color: var(--primary-color);"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800">Contact for Purchase</h2>
+                <p class="text-sm text-gray-500 mt-2">Get in touch with our sales team.</p>
+            </div>
+            <div class="mb-6 text-center">
+                <p class="text-lg font-semibold mb-2 text-gray-700">Sales Department</p>
+                <p class="text-3xl font-bold mb-4" id="contact-number" style="color: var(--primary-color);"></p>
+                <div class="flex justify-center space-x-4">
+                    <a id="call-now-link" href="#" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition flex items-center shadow-md">
+                        <i class="fas fa-phone mr-2"></i> Call Now
+                    </a>
+                    <button id="copy-number" class="btn-secondary px-6 py-3 rounded-lg font-semibold flex items-center shadow-md">
+                        <i class="fas fa-copy mr-2"></i> Copy
+                    </button>
+                </div>
+            </div>
+            <button id="close-contact-modal" class="w-full mt-4 btn-secondary py-3 rounded-lg text-lg font-semibold">Close</button>
+        </div>
+    </div>
+
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-exclamation-triangle text-red-600 text-2xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800">Are you sure?</h2>
+                <p class="text-sm text-gray-500 mt-2" id="confirmation-message">This action cannot be undone.</p>
+            </div>
+            <div class="flex justify-center space-x-4">
+                <button id="cancel-delete-btn" class="btn-secondary px-6 py-3 rounded-lg font-semibold transition">Cancel</button>
+                <button id="confirm-delete-btn" class="btn-danger px-6 py-3 rounded-lg font-semibold transition">Yes, Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- DATA (Hardcoded) ---
+        // To make permanent changes, edit the arrays below and re-upload the file.
+        const ADMIN_CREDENTIALS = { username: "NAA", password: "NAA123" };
+        const BUSINESS_NUMBER = "+91 90226 39081";
+
+        let generators = [
+            { id: 1, brand: "Mahindra", model: "Powerol 1000", kva: 10, image: "https://placehold.co/500x500/f0f0f0/333?text=Mahindra+10kVA", description: "Reliable and fuel-efficient generator for small businesses and homes.", features: ["Silent Operation", "Low Fuel Consumption", "Compact Design"] },
+            { id: 2, brand: "Kirloskar", model: "Green DG25", kva: 25, image: "https://placehold.co/500x500/f0f0f0/333?text=Kirloskar+25kVA", description: "Industrial-grade generator with excellent performance and durability.", features: ["High Power Output", "Robust Construction", "Easy Maintenance"] },
+            { id: 3, brand: "Cummins", model: "C30D5", kva: 30, image: "https://placehold.co/500x500/f0f0f0/333?text=Cummins+30kVA", description: "A powerful and reliable solution for commercial applications.", features: ["Advanced Control Panel", "Superior Efficiency", "Global Support"] }
+        ];
+
+        let heroSlides = [
+            { id: 1, url: "https://images.unsplash.com/photo-1605152276897-4f618f831968?q=80&w=1950&auto=format&fit=crop" },
+            { id: 2, url: "https://images.unsplash.com/photo-1588392382834-a891154bca4d?q=80&w=2070&auto=format&fit=crop" },
+            { id: 3, url: "https://images.unsplash.com/photo-1624397640148-949b1732bb0a?q=80&w=1950&auto=format&fit=crop" }
+        ];
+
+        // --- CORE UI & NAVIGATION ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('active'));
+
+        function showPage(pageId) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.add('hidden'));
+            document.getElementById(pageId).classList.remove('hidden');
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active', 'bg-gray-100'));
+            document.querySelectorAll(`.nav-${pageId.replace('-section', '')}`).forEach(l => l.classList.add('active', 'bg-gray-100'));
+            const heroBanner = document.getElementById('hero-banner-container');
+            heroBanner.style.display = pageId === 'home-section' ? 'block' : 'none';
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const pageId = `${link.classList[1].replace('nav-', '')}-section`;
+                showPage(pageId);
+                mobileMenu.classList.remove('active');
+            });
+        });
+        
+        // --- SEARCH ---
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            const filtered = generators.filter(g => 
+                g.brand.toLowerCase().includes(searchTerm) || 
+                g.model.toLowerCase().includes(searchTerm) ||
+                g.description.toLowerCase().includes(searchTerm)
+            );
+            renderGenerators(filtered);
+            document.getElementById('search-results').classList.toggle('hidden', !searchTerm);
+            document.getElementById('results-count').textContent = filtered.length;
+        });
+
+        // --- ADMIN LOGIN ---
+        const adminModal = document.getElementById('admin-login-modal');
+        document.getElementById('hidden-login-btn').addEventListener('click', () => adminModal.classList.add('active'));
+        document.getElementById('admin-login-form').addEventListener('submit', e => {
+            e.preventDefault();
+            const username = document.getElementById('admin-username').value;
+            const password = document.getElementById('admin-password').value;
+            if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+                adminModal.classList.remove('active');
+                document.querySelectorAll('.nav-admin').forEach(l => l.classList.remove('hidden'));
+                showPage('admin-section');
+            } else {
+                document.getElementById('login-error').textContent = 'Invalid credentials.';
+                document.getElementById('login-error').classList.remove('hidden');
+            }
+        });
+        document.querySelector('.logout-btn').addEventListener('click', () => {
+            document.querySelectorAll('.nav-admin').forEach(l => l.classList.add('hidden'));
+            showPage('home-section');
+        });
+
+        // --- SLIDER ---
+        let currentSlide = 0;
+        let slideInterval;
+        const heroBanner = document.querySelector('.hero-banner');
+        const slideControls = document.getElementById('slide-controls');
+
+        function updateSlide() {
+            if (heroSlides.length > 0) {
+                heroBanner.style.backgroundImage = `url('${heroSlides[currentSlide].url}')`;
+                document.querySelectorAll('.slide-indicator').forEach((ind, i) => ind.classList.toggle('active', i === currentSlide));
+            }
+        }
+        function startSlider() {
+            if(slideInterval) clearInterval(slideInterval);
+            if (heroSlides.length === 0) {
+                heroBanner.style.backgroundImage = 'none';
+                slideControls.innerHTML = '';
+                return;
+            }
+            slideControls.innerHTML = heroSlides.map((_, i) => `<div class="slide-indicator" data-index="${i}"></div>`).join('');
+            updateSlide();
+            slideInterval = setInterval(() => { currentSlide = (currentSlide + 1) % heroSlides.length; updateSlide(); }, 5000);
+            slideControls.addEventListener('click', e => {
+                if(e.target.dataset.index) {
+                    currentSlide = parseInt(e.target.dataset.index);
+                    updateSlide();
+                    startSlider(); // reset interval
+                }
+            });
+        }
+
+        // --- RENDERING FUNCTIONS ---
+        function renderHeroSlides() {
+            const list = document.getElementById('slides-list');
+            list.innerHTML = heroSlides.length ? heroSlides.map((slide) => `
+                <div class="flex items-center justify-between bg-gray-100 p-2 rounded-lg" data-id="${slide.id}">
+                    <img src="${slide.url}" class="w-12 h-12 object-cover rounded-md mr-3">
+                    <span class="text-gray-700 truncate text-sm flex-1">${slide.url}</span>
+                    <button class="delete-slide text-red-500 hover:text-red-700 ml-4 p-2"><i class="fas fa-trash"></i></button>
+                </div>`).join('') : `<p class="text-gray-500 text-center">No slides found.</p>`;
+        }
+        function renderAdminGeneratorsList() {
+            const list = document.getElementById('generators-list');
+            list.innerHTML = generators.length ? generators.map(g => `
+                <div class="flex items-center justify-between bg-gray-100 p-2 rounded-lg" data-id="${g.id}">
+                    <img src="${g.image}" class="w-12 h-12 object-cover rounded-md mr-3">
+                    <div class="flex-1 overflow-hidden">
+                        <h4 class="font-medium truncate">${g.brand} ${g.model}</h4>
+                        <p class="text-sm text-gray-600">${g.kva}kVA</p>
+                    </div>
+                    <button class="delete-generator text-red-500 hover:text-red-700 ml-4 p-2"><i class="fas fa-trash"></i></button>
+                </div>`).join('') : `<p class="text-gray-500 text-center">No generators found.</p>`;
+        }
+        function renderGenerators(gens = generators) {
+            const container = document.getElementById('generators-container');
+            container.innerHTML = gens.length ? gens.map(g => `
+                <div class="generator-card bg-white rounded-lg overflow-hidden">
+                    <div class="h-56 bg-gray-200"><img src="${g.image}" alt="${g.brand} ${g.model}" class="h-full w-full object-cover"></div>
+                    <div class="p-6">
+                        <p class="text-sm font-semibold" style="color: var(--primary-color);">${g.brand}</p>
+                        <h3 class="text-xl font-bold text-gray-800 mt-1">${g.model} - ${g.kva}kVA</h3>
+                        <p class="text-gray-600 mt-2 mb-4 h-20 overflow-hidden">${g.description}</p>
+                        <div class="mt-4 grid grid-cols-2 gap-3">
+                            <button class="whatsapp-btn w-full btn-secondary py-2 px-4 rounded-md font-semibold flex items-center justify-center text-sm"><i class="fab fa-whatsapp mr-2"></i> WhatsApp</button>
+                            <button class="contact-btn w-full btn-primary py-2 px-4 rounded-md font-semibold text-sm">Contact</button>
+                        </div>
+                    </div>
+                </div>`).join('') : `<p class="text-gray-500 text-center col-span-full">No generators found.</p>`;
+        }
+
+        // --- ADMIN ACTIONS ---
+        document.getElementById('add-slide-btn').addEventListener('click', () => {
+            const input = document.getElementById('slide-image-url');
+            if (input.value.trim()) {
+                heroSlides.push({ id: Date.now(), url: input.value.trim() });
+                renderHeroSlides(); startSlider(); input.value = '';
+            }
+        });
+        document.getElementById('generator-form').addEventListener('submit', e => {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            const newGenerator = {
+                id: Date.now(),
+                brand: formData.get('brand'), model: formData.get('model'), kva: parseInt(formData.get('kva')),
+                image: formData.get('image'), description: formData.get('description'),
+                features: formData.get('features').split(',').map(f => f.trim())
+            };
+            generators.push(newGenerator);
+            renderGenerators(); renderAdminGeneratorsList(); form.reset();
+        });
+        document.querySelector('.cancel-btn').addEventListener('click', () => document.getElementById('generator-form').reset());
+
+        // --- MODALS (Contact & Confirmation) ---
+        const contactModal = document.getElementById('contact-modal');
+        document.getElementById('contact-number').textContent = BUSINESS_NUMBER;
+        document.getElementById('footer-contact-number').textContent = BUSINESS_NUMBER;
+        document.getElementById('call-now-link').href = `tel:${BUSINESS_NUMBER}`;
+        document.getElementById('close-contact-modal').addEventListener('click', () => contactModal.classList.remove('active'));
+        document.getElementById('copy-number').addEventListener('click', () => {
+            navigator.clipboard.writeText(BUSINESS_NUMBER).then(() => {
+                const btn = document.getElementById('copy-number');
+                btn.innerHTML = '<i class="fas fa-check mr-2"></i> Copied!';
+                setTimeout(() => { btn.innerHTML = '<i class="fas fa-copy mr-2"></i> Copy'; }, 2000);
+            });
+        });
+        
+        const confirmationModal = document.getElementById('confirmation-modal');
+        let onConfirmDelete = null;
+        document.getElementById('confirm-delete-btn').addEventListener('click', () => {
+            if (onConfirmDelete) onConfirmDelete();
+            confirmationModal.classList.remove('active');
+        });
+        document.getElementById('cancel-delete-btn').addEventListener('click', () => confirmationModal.classList.remove('active'));
+
+        // --- EVENT DELEGATION ---
+        document.addEventListener('click', e => {
+            if (e.target.closest('.explore-btn')) showPage('generators-section');
+            if (e.target.closest('.contact-btn')) contactModal.classList.add('active');
+            
+            const whatsappBtn = e.target.closest('.whatsapp-btn');
+            if (whatsappBtn) {
+                const card = whatsappBtn.closest('.generator-card');
+                const brand = card.querySelector('p').textContent;
+                const modelAndKva = card.querySelector('h3').textContent;
+                const message = `Hi, I'm interested in the ${brand} ${modelAndKva} generator. Could you provide more information?`;
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/${BUSINESS_NUMBER.replace(/\D/g, '')}?text=${encodedMessage}`;
+                window.open(whatsappUrl, '_blank');
+            }
+
+            if (e.target.closest('.modal') && !e.target.closest('.modal-content')) e.target.closest('.modal').classList.remove('active');
+            
+            const deleteGenBtn = e.target.closest('.delete-generator');
+            if (deleteGenBtn) {
+                const id = parseInt(deleteGenBtn.closest('[data-id]').getAttribute('data-id'));
+                onConfirmDelete = () => {
+                    generators = generators.filter(g => g.id !== id);
+                    renderAdminGeneratorsList(); renderGenerators();
+                };
+                confirmationModal.classList.add('active');
+            }
+            
+            const deleteSlideBtn = e.target.closest('.delete-slide');
+            if (deleteSlideBtn) {
+                const id = parseInt(deleteSlideBtn.closest('[data-id]').getAttribute('data-id'));
+                onConfirmDelete = () => {
+                    heroSlides = heroSlides.filter(s => s.id !== id);
+                    renderHeroSlides(); startSlider();
+                };
+                confirmationModal.classList.add('active');
+            }
+        });
+
+        // --- INITIALIZE ---
+        showPage('home-section');
+        renderGenerators();
+        renderHeroSlides();
+        renderAdminGeneratorsList();
+        startSlider();
+    });
+    </script>
+</body>
+</html>
