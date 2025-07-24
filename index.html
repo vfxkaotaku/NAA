@@ -451,8 +451,7 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // --- DATA (Hardcoded) ---
-        // To make permanent changes, edit the arrays below and re-upload the file.
+        // --- DATA (Hardcoded for initial view, will be updated from source) ---
         const ADMIN_CREDENTIALS = { username: "NAA", password: "NAA123" };
         const BUSINESS_NUMBER = "+91 90226 39081";
 
@@ -467,6 +466,38 @@
             { id: 2, url: "https://images.unsplash.com/photo-1588392382834-a891154bca4d?q=80&w=2070&auto=format&fit=crop" },
             { id: 3, url: "https://images.unsplash.com/photo-1624397640148-949b1732bb0a?q=80&w=1950&auto=format&fit=crop" }
         ];
+
+        // --- NEW: FUNCTION TO COMMIT CHANGES ---
+        async function commitChanges() {
+            const loadingButton = document.querySelector('.logout-btn'); // Or another button to show status
+            const originalText = loadingButton.innerHTML;
+            loadingButton.innerHTML = `<i class="fas fa-spinner fa-spin mr-2"></i> Saving...`;
+            loadingButton.disabled = true;
+
+            try {
+                const response = await fetch('/.netlify/functions/update-site', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ heroSlides: heroSlides }) // Send the current state of heroSlides
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.message);
+                }
+                
+                alert("Success! Your website is being updated. It may take a minute to go live.");
+
+            } catch (error) {
+                console.error("Failed to update website:", error);
+                alert(`Error: Could not update the website. Please check the console for details.`);
+            } finally {
+                loadingButton.innerHTML = originalText;
+                loadingButton.disabled = false;
+            }
+        }
+
 
         // --- CORE UI & NAVIGATION ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -600,7 +631,10 @@
             const input = document.getElementById('slide-image-url');
             if (input.value.trim()) {
                 heroSlides.push({ id: Date.now(), url: input.value.trim() });
-                renderHeroSlides(); startSlider(); input.value = '';
+                renderHeroSlides(); 
+                startSlider(); 
+                input.value = '';
+                commitChanges(); // <-- Call commit function
             }
         });
         document.getElementById('generator-form').addEventListener('submit', e => {
@@ -673,7 +707,9 @@
                 const id = parseInt(deleteSlideBtn.closest('[data-id]').getAttribute('data-id'));
                 onConfirmDelete = () => {
                     heroSlides = heroSlides.filter(s => s.id !== id);
-                    renderHeroSlides(); startSlider();
+                    renderHeroSlides(); 
+                    startSlider();
+                    commitChanges(); // <-- Call commit function
                 };
                 confirmationModal.classList.add('active');
             }
